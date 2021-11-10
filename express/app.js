@@ -117,11 +117,12 @@ app.use((req, res, next) => { // 미들웨어 메서드는 모든 라우터에 �
         httpOnly: true,
         path: '/',
     });
+    /*
     res.clearCookie('name', encodeURIComponent(name), { // 쿠키 삭제
         httpOnly: true,
         path: '/',
     });
-
+    */
     req.session.data = 'session데이터'; // 계속 유지하고 싶은 데이터
     req.data = '1회용 데이터'; // 비밀번호 같은 1회용 데이터
 
