@@ -16,6 +16,7 @@ const userRouter = require('./routers/user');
 // 3. 공통 미들웨어
 // 4. 라우터 작성(범위가 넓은 라우터를 밑으로)
 // 5. 에러 라우터 작성
+// request = 사용자의 요청 | response = 서버의 응답
 
 // dotenv
 // 비밀 키들을 관리할 수 있는 패키지 시스템에 따른 설정도 관리할 수 있다.
@@ -27,6 +28,8 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000); // 포트 전역 변수
 
+app.set('views', path.join(__dirname, 'views')); // pug views
+app.set('view engine', 'pug'); // pug view engine
 
 // morgan은 서버의 응답 상태를 알려준다.(ex. GET /app 200 2.5 ms - 9(바이트))
 // 'dev'는 개발자용(상태만), 'combined'는 배포용(시간, 누구 등)
@@ -70,7 +73,7 @@ app.use(express.json); // json 데이터를 받는 구문
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/index', indexRouter);
-app.use('/user', userRouter); // user.js파일의 주소가 /라면 /user/ 이다.
+app.use('/user', userRouter); // user.js 라우터 주소가 /login라면 /user/login 이다.
 
 
 // 파일 업로드
@@ -165,15 +168,14 @@ app.get('/app', (req, res) => {
     res.send('hello express');
 });
 
-/*
 app.use((req, res, next) => { // 404 에러 실행 라우트
-    res.status(404).send('404 에러'); // status로 http 상태코드를 설정할 수 있다.
+    res.status(404).send('Not Found'); // status로 http 상태코드를 설정할 수 있다.
     // 보안을 위해 400, 500 번대는 조심해야 한다.
 });
-*/
 
 app.use((err, req, res, next) => { // 에러 전용 라우트는 next까지 4개의 매개변수가 있어야 한다.
     console.error(err);
+    res.status(500).send(err.message);
 });
 
 app.listen(3000, () => {
