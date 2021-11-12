@@ -10,7 +10,9 @@ function Input() {
     }
 
     const reset = (e) => {
-        setText('');
+        setText({
+          text:''
+        });
     }
 
     return (
