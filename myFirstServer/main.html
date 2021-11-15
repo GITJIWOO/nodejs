@@ -13,16 +13,28 @@
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    /*
     document.getElementById("loginForm").addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData();
         const id = e.target.id.value;
-        console.log(id);
         if(!id) {
             return alert('아이디를 입력하십시오');
         }
         formData.append('id', { id });
-        await axios.post('/login', formData);
+        await axios.post('/login', {
+            params: {
+                id: id,
+            }
+        })
+        .then((res) => {
+            const id = res.params({ id:id });
+            console.log(id);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     });
+    */
 </script>
 </html>
