@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const fs = require('fs');
 
 const router = express();
 
@@ -13,9 +14,11 @@ router.get('/main', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    axios.
+    const id = req.body.id;
     console.log(id);
-    res.json(id);
+    res.json({
+        id: id,
+    });
 });
 
 router.use((err, req, res, next) => {
