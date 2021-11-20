@@ -10,6 +10,9 @@
         <input type="text" name="id" placeholder="ID" />
         <input type="submit" value="Login" />
     </form>
+    <div class="id">
+
+    </div>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -22,7 +25,14 @@
             return alert('아이디를 입력하십시오');
         }
         formData.append('id', { id });
-        await axios.post('/login', formData);
+        console.log(formData.get('id'));
+        await axios.post('/login', formData.get('id')
+        .then((res) => {
+            document.getElementById('id').innerText(res.target.id.value);
+        })
+        .catch((err) => {
+            console.log(err);
+        }));
     });
 </script>
 </html>

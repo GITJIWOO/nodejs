@@ -10,8 +10,9 @@ router.get('/main', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    req.on('data', (data) => {
-        console.log(JSON.parse(data));
+    console.log(res.json().data);
+    res.json({
+        id: req.params.id
     });
 });
 
