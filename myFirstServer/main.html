@@ -8,7 +8,7 @@
     <h1>Hello World!</h1>
     <form action="/login" id="loginForm" method="post">
         <input type="text" name="id" placeholder="ID" />
-        <input type="submit" value="Login" />
+        <button type="submit" name="Login">Login</button>
     </form>
     <div class="idData">
     </div>
@@ -28,8 +28,8 @@
         })
         .then((res) => {
             const idData = document.getElementById('idData');
-            console.log('아이디 :' + res.json());
-            idData.innerHTML = res.json();
+            console.log('아이디 :' + res.data);
+            idData.innerText(res.json());
         })
         .catch((error) => {
             console.log(error);

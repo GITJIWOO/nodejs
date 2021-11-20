@@ -1,10 +1,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const fs = require('fs');
 
 const router = express();
+
+const getJson = () => 
+    JSON.stringify({
+        'method': 'GET',
+        'num': Math.floor((Math.random() * 100) + 1),
+    });
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
