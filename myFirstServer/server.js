@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
@@ -21,9 +22,6 @@ router.get('/main', (req, res) => {
 router.post('/login', (req, res) => {
     const id = req.body.id;
     console.log(id);
-    res.json({
-        id: id
-    });
 });
 
 router.use((err, req, res, next) => {
