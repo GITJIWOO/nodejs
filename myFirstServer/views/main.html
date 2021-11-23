@@ -26,11 +26,6 @@
         await axios.post('/login', {
             id: formData.get('id'),
         })
-        .then((res) => {
-            console.log('아이디 :' + res.data);
-            const idData = document.getElementById('idData');
-            idData.innerText(res.json());
-        })
         .catch((error) => {
             console.log(error);
         });
