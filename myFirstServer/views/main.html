@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Hello World!</h1>
-    <form action="/login" id="loginForm" method="post">
+    <form action="/welcome" id="loginForm" method="post">
         <input type="text" name="id" placeholder="ID" />
         <button type="submit" name="Login">Login</button>
     </form>
@@ -23,7 +23,7 @@
             return alert('아이디를 입력하십시오');
         }
         formData.append('id', id);
-        await axios.post('/login', {
+        await axios.post('/welcome', {
             id: formData.get('id'),
         })
         .catch((error) => {

@@ -7,8 +7,8 @@ const ejs = require('ejs');
 
 const router = express();
 
-router.set('view engine', 'ejs'); //'ejs'탬플릿을 엔진으로 한다.
 router.set('views', path.join(__dirname, './views'));
+router.set('view engine', 'ejs'); //'ejs'탬플릿을 엔진으로 한다.
 
 const getJson = () => 
     JSON.stringify({
@@ -24,14 +24,14 @@ router.get('/main', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+});
+
+router.post('/welcome', (req, res) => {
     const id = req.body.id;
-    res.render('welcome', {
+    res.render('id', {
         title: 'Login',
         id: id,
     });
-});
-
-router.get('/welcome', (req, res) => {
     res.sendFile(path.join(__dirname, './views/welcome.html'));
 });
 
