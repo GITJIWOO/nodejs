@@ -24,15 +24,20 @@ router.get('/main', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    res.render('main', {
+        id: id,
+    });
 });
 
 router.post('/welcome', (req, res) => {
     const id = req.body.id;
-    res.render('id', {
+    console.log(id);
+    res.render('welcome', {
         title: 'Login',
         id: id,
     });
-    res.sendFile(path.join(__dirname, './views/welcome.html'));
 });
 
 router.use((err, req, res, next) => {
