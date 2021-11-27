@@ -26,7 +26,7 @@ router.get('/main', (req, res) => {
 router.post('/login', (req, res) => {
     const id = req.params.id;
     console.log(id);
-    res.render('main', {
+    res.render({
         id: id,
     });
 });
