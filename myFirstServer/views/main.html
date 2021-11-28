@@ -25,7 +25,7 @@
         })
         .then((res) => {
             const idData = document.getElementsById('idData');
-            idData.innerHTML(res.id);
+            idData.innerHTML('<h1>' + res.innerHTML + '</h1>');
         })
         .catch((error) => {
             console.log(error);
